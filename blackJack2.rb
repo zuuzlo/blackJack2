@@ -83,8 +83,10 @@ while play
 	dealers_hand = []
   players_hand = []
 	
-	if cards_left < 15 puts"Time to shuffle" cards = card_shuffle(players_name,
-	deck_number) end
+	if cards_left < 15 
+		puts "Time to shuffle" 
+		cards = card_shuffle(players_name, deck_number) 
+	end
 	
 	puts "Here come the cards..."
 	puts "#{players_name} gets: \t#{cards.last}"
