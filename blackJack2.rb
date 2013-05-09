@@ -30,9 +30,9 @@ def card_shuffle(players_name, n)
 	puts "#{players_name}, would you like to cut the cards? (y/n)"
 	cuts_answer = gets.chomp
 	if cuts_answer == "y"
-		puts"At what card to cut? (1-51)"
+		puts"At what card to cut? (1-#{n.to_i*51})"
 		cut_location = gets.chomp
-		if cut_location.to_i > 1 && cut_location.to_i < 51
+		if cut_location.to_i > 1 && cut_location.to_i < (n.to_i*51)
 			cards.rotate!(cut_location.to_i)
 		else
 			puts"Sorry, #{players_name} cut location out of range, not cut"
@@ -44,7 +44,7 @@ def card_shuffle(players_name, n)
 	cards
 end
 
-puts "Welcoome to BlackJack Ruby Style!"
+puts "Welcome to BlackJack Ruby Style!"
 puts "What is your name?"
 players_name = gets.chomp
 if players_name == ""
@@ -55,7 +55,7 @@ deck_number = gets.chomp
 
 if deck_number.to_i > 6 || deck_number.to_i < 1 
 	deck_number = 1
-	puts "#{player_name}, invalide entry, you will be playing with one deck."
+	puts "#{player_name}, invalid entry, you will be playing with one deck."
 end
 
 cards = card_shuffle(players_name, deck_number)
@@ -71,7 +71,7 @@ puts "if you want to play again."
 puts"___________________________________________________________"
 
 
-	#TODO replay loop start here
+	#replay loop start here
 play = true	
 while play
 	dealer_busted = false
@@ -83,10 +83,8 @@ while play
 	dealers_hand = []
   players_hand = []
 	
-	if cards_left < 15
-		puts"Time to shuffle"
-		cards = card_shuffle(players_name)
-	end
+	if cards_left < 15 puts"Time to shuffle" cards = card_shuffle(players_name,
+	deck_number) end
 	
 	puts "Here come the cards..."
 	puts "#{players_name} gets: \t#{cards.last}"
